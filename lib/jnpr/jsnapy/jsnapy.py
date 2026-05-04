@@ -51,8 +51,7 @@ class SnapAdmin:
         self.test_cases = None
         self.parser = argparse.ArgumentParser(
             formatter_class=argparse.RawTextHelpFormatter,
-            description=textwrap.dedent(
-                """\
+            description=textwrap.dedent("""\
                                         Tool to capture snapshots and compare them
                                         It supports four subcommands:
                                          --snap, --check, --snapcheck, --diff
@@ -64,8 +63,7 @@ class SnapAdmin:
                                                 jsnapy --snapcheck snapfile -f main_configfile
                                         4. Take diff without specifying test case:
                                                 jsnapy --diff pre_snapfile post_snapfile -f main_configfile
-                                            """
-            ),
+                                            """),
             usage="\nThis tool enables you to capture and audit runtime environment of "
             "\nnetworked devices running the Junos operating system (Junos OS)\n",
         )
@@ -139,15 +137,13 @@ class SnapAdmin:
             "-v",
             "--verbosity",
             action="count",
-            help=textwrap.dedent(
-                """\
+            help=textwrap.dedent("""\
             Set verbosity
             -v: Debug level messages
             -vv: Info level messages
             -vvv: Warning level messages
             -vvvv: Error level messages
-            -vvvvv: Critical level messages"""
-            ),
+            -vvvvv: Critical level messages"""),
         )
         # self.parser.add_argument(
         #     "-m",
@@ -426,7 +422,7 @@ class SnapAdmin:
         pre_snap=None,
         post_snap=None,
         action=None,
-        **kwargs
+        **kwargs,
     ):
         """
         called by check and snapcheck argument, to compare snap files
@@ -617,7 +613,7 @@ class SnapAdmin:
         config_data=None,
         action=None,
         post_snap=None,
-        **kwargs
+        **kwargs,
     ):
         """
         connect to device and calls the function either to generate snapshots
@@ -661,7 +657,7 @@ class SnapAdmin:
                 user=username,
                 passwd=password,
                 gather_facts=False,
-                **kwargs
+                **kwargs,
             )
             try:
                 dev.open()
@@ -678,7 +674,7 @@ class SnapAdmin:
                         config_data,
                         action,
                         post_snap,
-                        **kwargs
+                        **kwargs,
                     )
                 else:
                     self.logger.error(
@@ -996,7 +992,7 @@ class SnapAdmin:
         # then it should print error message.
         if not (
             (self.args.file is None)
-            and ((self.args.testfiles is None or self.args.hostname is None))
+            and (self.args.testfiles is None or self.args.hostname is None)
         ):
             action = None
             if self.set_action_cmd(action) is not None:

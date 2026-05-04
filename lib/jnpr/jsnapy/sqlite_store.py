@@ -23,17 +23,14 @@ class JsnapSqlite:
         try:
             with sqlite3.connect(self.db_filename) as conn:
                 # Creating schema if it does not exists
-                sqlstr = (
-                    """create table if not exists '%s' (
+                sqlstr = """create table if not exists '%s' (
                     id           integer not null,
                     filename     text,
                     cli_command  text,
                     snap_name    text,
                     data_format  text,
                     data     text
-                );"""
-                    % self.table_name
-                )
+                );""" % self.table_name
                 conn.execute(sqlstr)
         except Exception as ex:
             self.logger_storesqlite.error(
