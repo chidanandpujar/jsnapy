@@ -51,7 +51,8 @@ class SnapAdmin:
         self.test_cases = None
         self.parser = argparse.ArgumentParser(
             formatter_class=argparse.RawTextHelpFormatter,
-            description=textwrap.dedent("""\
+            description=textwrap.dedent(
+                """\
                                         Tool to capture snapshots and compare them
                                         It supports four subcommands:
                                          --snap, --check, --snapcheck, --diff
@@ -63,7 +64,8 @@ class SnapAdmin:
                                                 jsnapy --snapcheck snapfile -f main_configfile
                                         4. Take diff without specifying test case:
                                                 jsnapy --diff pre_snapfile post_snapfile -f main_configfile
-                                            """),
+                                            """
+            ),
             usage="\nThis tool enables you to capture and audit runtime environment of "
             "\nnetworked devices running the Junos operating system (Junos OS)\n",
         )
@@ -137,13 +139,15 @@ class SnapAdmin:
             "-v",
             "--verbosity",
             action="count",
-            help=textwrap.dedent("""\
+            help=textwrap.dedent(
+                """\
             Set verbosity
             -v: Debug level messages
             -vv: Info level messages
             -vvv: Warning level messages
             -vvvv: Error level messages
-            -vvvvv: Critical level messages"""),
+            -vvvvv: Critical level messages"""
+            ),
         )
         # self.parser.add_argument(
         #     "-m",
