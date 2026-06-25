@@ -56,7 +56,7 @@ jobs:
     
     - name: Run black tool
       run: |
-        pip install black==24.10.0;
+        pip install black==24.8.0;
         black --check --diff --exclude="docs|build|tests|samples|venv" .
     
     - name: Run unit test
